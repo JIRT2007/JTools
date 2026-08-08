@@ -13,7 +13,7 @@
 ####################
 ### Variables    ###
 ####################
-VM_DIR="$HOME/JTools/.qemu-vm"
+VM_DIR="$HOME/JTools/qemu-vm"
 CONFIG_DIR="$VM_DIR/config"
 DISK_DIR="$VM_DIR/disks"
 
