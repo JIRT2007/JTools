@@ -17,11 +17,7 @@
 Se recomienda para facilitar el uso del script el convertirlo en un alias para poder ejecutarlo como comando en su respectiva terminal de comandos. Esto se puede hacer editando el archivo `.bashrc` y colocar al final del mismo un alias del estilo: 
     `alias jtools='bash ~/JTools/JTools.sh'`
 Luego se deberá de recargar la configuración del mismo mediante el comando `source .bashrc`. Esto permitirá que al ejecutar el comando `jtools` en la terminal se inicie el script.
-
-### Se recomienda tener instalados los siguientes programas y servicios:
-- Docker.
-- KVM/QEMU.
-- UFW.
+Otra recomendación fundamental es ejecutar la primera opción que ofrece le menú de JTools que permite la instalación de los programas necesarios y la generación de la estructura de directorios.
 
 ## Licencias y alojamiento:
 El código de **JTools** se encuentra actualmente alojado dentro de un repositorio de la plataforma GitHub y se respalda tras la certificación de **General Public License v2.0** (**GPL v2.0**) cuyas especificaciones podrán encontrarse en la respectiva web del proyecto **GNU**.
@@ -32,4 +28,11 @@ El código de **JTools** se encuentra actualmente alojado dentro de un repositor
 **JIRT2007** es el desarrollador y mantenedor principal del proyecto **JTools** al igual que de proyectos como **CentrixCL** del cual se podrá encontrar información en su respectiva web alojada en GitHub Pages: **https://jirt2007.github.io/webCENTRIX/**
 
 ## Changelog:
-- **v0.0.1 :** Se ofrece la primera versión oficial de JTools, el mismo ofrece unicamente un gestor de VMs mediante KVM/QEMU. Futuras funcionalidades serán implementadas a futuro. Muchas gracias :)
+
+###v0.0.2:
+- Se habilita dentro del menú de JTools, la opción NECESARIA para el correcto funcionamiento de la herramienta que permite la instalación de los paquetes bases y la generación de la estructura de directorios para sistemas **Debian GNU/Linux**, **ArchLinux** y **Fedora** empleando los respectivos gestores de paquetes de los mismos (apt, pacman y dnf).
+- Se implementaron opciones para gestionar de forma básica el firewall UFW el cual ofrece simples operaciones que ofrece el programa. Se pueden presentar errores los cuales serán corregidos en futuras versiones.
+
+###v0.0.1
+- Se ofrece la primera versión oficial de JTools, el mismo ofrece unicamente un gestor de VMs mediante KVM/QEMU. Futuras funcionalidades serán implementadas a futuro. Muchas gracias :)
+
