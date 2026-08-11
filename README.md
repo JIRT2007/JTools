@@ -29,10 +29,10 @@ El código de **JTools** se encuentra actualmente alojado dentro de un repositor
 
 ## Changelog:
 
-###v0.0.2:
+### v0.0.2:
 - Se habilita dentro del menú de JTools, la opción NECESARIA para el correcto funcionamiento de la herramienta que permite la instalación de los paquetes bases y la generación de la estructura de directorios para sistemas **Debian GNU/Linux**, **ArchLinux** y **Fedora** empleando los respectivos gestores de paquetes de los mismos (apt, pacman y dnf).
 - Se implementaron opciones para gestionar de forma básica el firewall UFW el cual ofrece simples operaciones que ofrece el programa. Se pueden presentar errores los cuales serán corregidos en futuras versiones.
 
-###v0.0.1
+### v0.0.1
 - Se ofrece la primera versión oficial de JTools, el mismo ofrece unicamente un gestor de VMs mediante KVM/QEMU. Futuras funcionalidades serán implementadas a futuro. Muchas gracias :)
 
