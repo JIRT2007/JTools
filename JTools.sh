@@ -3,7 +3,7 @@
 ####################
 ### Variables    ###
 ####################
-VM_DIR="$HOME/JTools/.qemu-vm"
+VM_DIR="$HOME/JTools/.qemu-vm" 
 CONFIG_DIR="$VM_DIR/config-vm"
 DISK_DIR="$VM_DIR/disks"
 
@@ -41,11 +41,10 @@ cat << "EOF"
     [0] Exit.
 ═════════════════════════════════════════════════════════
 EOF
-
     read -p "    Enter your order: " optionMAIN_QEMU
     case $optionMAIN_QEMU in 
 
-    1)
+    	1)
         read -p "    VM name: " nameVM
         read -e -p "    Disk name: " name
         read -p "    Disk size (GB): " size
@@ -65,9 +64,9 @@ cat > "$CONFIG_DIR/${nameVM}.cfg" << EOF
  ISO=$iso       
  DISK=$disk         
 EOF
-    ;;
+    	;;
 
-    2)
+    	2)
         echo "    Existing VMs configurations:"
         echo ""
             ls "$CONFIG_DIR"/*.cfg | xargs -n1 basename  
@@ -80,9 +79,9 @@ EOF
         else 
             echo " Virtual machine does not exist."
         fi
-    ;;
+    	;;
 
-    3)
+    	3)
         echo "    Existing VMs configurations:"
 	    echo ""
             ls "$CONFIG_DIR"/*.cfg | xargs -n1 basename
@@ -96,9 +95,9 @@ EOF
         else 
             echo " Virtual machine does not exist."
         fi
-    ;;
+    	;;
 
-    4)
+    	4)
         clear
         echo ""
             echo -e " \e[1m   Stored Virtual Machines: \e[0m"
@@ -106,18 +105,17 @@ EOF
         echo ""    
             read -n1 -s -r -p "    Press any key to continue..."    
          
-    ;;
+    	;;
 
-    0)
-        clear
-        return
-    ;;
+    	0)
+          clear
+          return
+    	;;
 
-    *)
-        echo "Order not found."
-        sleep 2
-    ;;
-
+    	*)
+          echo "Order not found."
+          sleep 2
+    	;;
 esac
 done
 }
@@ -149,32 +147,30 @@ EOF
 	read -p "    Enter your order: " optionMAIN_STRUCTURE
 	case $optionMAIN_STRUCTURE in
 
-	1)
-	sudo apt install -y qemu-system-x86 ufw docker.io
-	CREATE_STRUCTURE
-	;;
+		1) 
+		sudo apt install -y qemu-system-x86 ufw docker.io 
+		CREATE_STRUCTURE
+		;;
 
-	2)
-	sudo pacman -S --needed --noconfirm qemu-desktop ufw docker
-	CREATE_STRUCTURE
-	;;
+		2) 
+		sudo pacman -S --needed --noconfirm qemu-desktop ufw docker 
+		CREATE_STRUCTURE
+		;;
 
-	3)
-	sudo dnf install -y qemu-system-x86 ufw docker
-	CREATE_STRUCTURE
-	;;
+		3) 
+		sudo dnf install -y qemu-system-x86 ufw docker 
+		CREATE_STRUCTURE
+		;;
 
-	0)
-	clear
-	return
-	;;
+		0)
+		clear
+		return
+		;;
 
-	*)
-	echo "Order not found."
-	sleep 2
-	;;
-
-
+		*)
+		echo "Order not found."
+		sleep 2
+		;;
 esac
 done
 }
@@ -216,58 +212,55 @@ EOF
 	read -p "    Enter your order: " optionMAIN_UFW
 	case $optionMAIN_UFW in
 
-	1)
-	sudo ufw enable
-	;;
+		1)
+		sudo ufw enable
+		;;
 
-	2)
-	sudo ufw disable
-	;;
+		2)
+		sudo ufw disable
+		;;
 
-	3)
-	sudo ufw reset	
-	;;
+		3)
+		sudo ufw reset	
+		;;
 
-	4)
-	echo ""
-	read -p "    Port: " idPORT_allow
-	read -p "    Protocol (TCP/UDP): " protocolPORT_allow
+		4)
+		echo ""
+		read -p "    Port: " idPORT_allow
+		read -p "    Protocol (TCP/UDP): " protocolPORT_allow
 		sudo ufw allow "$idPORT_allow"/"$protocolPORT_allow"	
-	;;
+		;;
 
-	5)
-	echo ""
-	read -p "    Port: " idPORT_deny
-	read -p "    Protocol (TCP/UDP): " protocolPORT_deny
+		5)
+		echo ""
+		read -p "    Port: " idPORT_deny
+		read -p "    Protocol (TCP/UDP): " protocolPORT_deny
 		sudo ufw deny "$idPORT_deny"/"$protocolPORT_deny"
-	;;
+		;;
 
-	6)
-	echo ""
-	clear
+		6)
+		echo ""
+		clear
 		sudo ufw status numbered
-	echo ""
-	read -n1 -s -r -p "    Press any key to continue..."
-	;;
+		echo ""
+		read -n1 -s -r -p "    Press any key to continue..."
+		;;
 
-	7)
-	echo ""
-	read -p "    Rule number: " idRULE
-	sudo ufw delete "$idRULE"
-	;;
+		7)
+		echo ""
+		read -p "    Rule number: " idRULE
+		sudo ufw delete "$idRULE"
+		;;
 
-	0)
-	clear
-	return
-	;;
+		0)
+		clear
+		return
+		;;
 
-	*)
-	echo "Order your found."
-	sleep 2	
-	;;
-
-
-
+		*)
+		echo "Order your found."
+		sleep 2	
+		;;
 esac
 done
 }
@@ -370,6 +363,90 @@ esac
 done
 }
 
+################
+### SSH Menu ###
+################
+SSH_MENU(){
+while true; do
+	clear
+
+cat << "EOF"
+
+  █████████   █████████  █████   █████
+ ███▒▒▒▒▒███ ███▒▒▒▒▒███▒▒███   ▒▒███
+▒███    ▒▒▒ ▒███    ▒▒▒  ▒███    ▒███
+▒▒█████████ ▒▒█████████  ▒███████████
+ ▒▒▒▒▒▒▒▒███ ▒▒▒▒▒▒▒▒███ ▒███▒▒▒▒▒███
+ ███    ▒███ ███    ▒███ ▒███    ▒███
+▒▒█████████ ▒▒█████████  █████   █████
+ ▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒   ▒▒▒▒▒
+═════════════════════════════════════════════════════════
+    [1] Connect by SSH.                                  
+    [2] Connect by SSH (localhost via port 2222).        
+    [3] Send by SSH.                                     
+    [4] Send by SSH (localhost via port 2222).           
+    [5] Send directory by SSH.                           
+    [6] Send directory by SSH. (localhost via port 2222) 
+    [0] Exit.
+═════════════════════════════════════════════════════════
+EOF
+	read -p "    Enter your order: " optionMAIN_SSH
+	case $optionMAIN_SSH in
+
+		1) 
+		read -p "Enter IP address: " optionIP
+	  	read -p "Enter user name: " optionNAME
+		ssh "$optionNAME@$optionIP"	  
+		;;
+
+		2)
+		read -p "Enter user name: " optionNAME_SSH_LOCALHOST
+		ssh -p 2222 "$optionNAME_SSH_LOCALHOST"@localhost
+		;;
+
+		3)
+		read -p "Enter location of the file: " optionFILE_SCP_FILE
+		read -p "Enter user name: " optionNAME_SCP_FILE
+		read -p "Enter IP address: " optionIP_SCP_FILE
+		read -p "Enter the destination: " optionDESTINATION_SCP_FILE
+		scp "$optionFILE_SCP_FILE" "$optionNAME_SCP_FILE@$optionIP_SCP_FILE:$optionDESTINATION_SCP_FILE"
+		;;
+
+		4)
+		read -p "Enter location of the file: " optionFILE_SCP_FILE_LOCALHOST
+		read -p "Enter user name: " optionNAME_SCP_FILE_LOCALHOST
+		read -p "Enter the destination: " optionDESTINATION_SCP_FILE_LOCALHOST
+		scp -P 2222 "$optionFILE_SCP_FILE_LOCALHOST" "$optionNAME_SCP_FILE_LOCALHOST"@localhost:"$optionDESTINATION_SCP_FILE_LOCALHOST"
+		;;
+
+		5)
+		read -p "Enter location of the directory: " optionDIRECTORY_SCP_DIRECTORY
+		read -p "Enter user name: " optionNAME_SCP_DIRECTORY
+		read -p "Enter IP address: " optionIP_SCP_DIRECTORY
+		read -p "Enter the destination: " optionDESTINATION_SCP_DIRECTORY
+		scp -r "$optionDIRECTORY_SCP_DIRECTORY" "$optionNAME_SCP_DIRECTORY@$optionIP_SCP_DIRECTORY:$optionDESTINATION_SCP_DIRECTORY"
+		;;
+
+		6)
+		read -p "Enter location of the directory: " optionDIRECTORY_SCP_DIRECTORY_LOCALHOST
+		read -p "Enter user name: " optionNAME_SCP_DIRECTORY_LOCALHOST
+		read -p "Enter the destination: " optionDESTINATION_SCP_DIRECTORY_LOCALHOST
+		scp -P 2222 -r "$optionDIRECTORY_SCP_DIRECTORY_LOCALHOST" "$optionNAME_SCP_DIRECTORY_LOCALHOST"@localhost:"$optionDESTINATION_SCP_DIRECTORY_LOCALHOST"
+		;;
+
+		0)
+		clear
+		return	
+		;;
+
+		*)
+		echo "Order not found."
+		sleep 2
+		;;
+esac
+done
+}
+
 ####################
 ### Menu inicial ###
 ####################
@@ -391,6 +468,7 @@ cat << "EOF"
     [2] KVM/QEMU manager.
     [3] Firewall UFW.
     [4] Docker.
+    [5] SSH protocol.
     [0] Exit.
 ═════════════════════════════════════════════════════════
 EOF
@@ -401,7 +479,7 @@ EOF
 	STRUCTURE	
         ;;
 
-        2)
+	2)
 	QEMU_MENU
         ;;
 
@@ -413,15 +491,18 @@ EOF
 	DOCKER_MENU
         ;;
 
+	5)
+	SSH_MENU	
+	;;
+
         0)
-            clear
-            exit 0
+        clear
+        exit 0
         ;;
 
         *)
-            echo "Order not found."
-            sleep 2
+        echo "Order not found."
+        sleep 2
         ;;
-
 esac
 done
