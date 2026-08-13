@@ -141,6 +141,7 @@ cat << "EOF"
     [1] Install in Debian GNU/Linux.
     [2] Install in ArchLinux.
     [3] Install in Fedora.
+    [4] Only create structure.
     [0] Exit.
 ═════════════════════════════════════════════════════════
 EOF
@@ -159,6 +160,10 @@ EOF
 
 		3) 
 		sudo dnf install -y qemu-system-x86 ufw docker 
+		CREATE_STRUCTURE
+		;;
+
+		4)
 		CREATE_STRUCTURE
 		;;
 
@@ -381,10 +386,11 @@ cat << "EOF"
 ▒▒█████████ ▒▒█████████  █████   █████
  ▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒   ▒▒▒▒▒
 ═════════════════════════════════════════════════════════
+    [1] Start
     [1] Connect by SSH.                                  
-    [2] Connect by SSH (localhost via port 2222).        
+    [2] Connect by SSH. (localhost via port 2222)        
     [3] Send by SSH.                                     
-    [4] Send by SSH (localhost via port 2222).           
+    [4] Send by SSH. (localhost via port 2222)          
     [5] Send directory by SSH.                           
     [6] Send directory by SSH. (localhost via port 2222) 
     [0] Exit.
@@ -467,8 +473,7 @@ cat << "EOF"
     [1] Install operating structure.
     [2] KVM/QEMU manager.
     [3] Firewall UFW.
-    [4] Docker.
-    [5] SSH protocol.
+    [4] SSH protocol.
     [0] Exit.
 ═════════════════════════════════════════════════════════
 EOF
@@ -487,12 +492,12 @@ EOF
     	UFW_MENU
         ;;
 
-        4)
-	DOCKER_MENU
-        ;;
-
-	5)
+	4)
 	SSH_MENU	
+	;;
+
+        5)
+	DOCKER_MENU
 	;;
 
         0)

@@ -3,7 +3,7 @@
 
 ## Características:
 - JTools se encuentra programado íntegramente en el lenguaje del paradigma imperativo **Bash Script** y se define enteramente en un único archivo de programación, esto con el objetivo de simplificar su manejo y no mantener varios scripts que puedan dificultar el trabajo tanto de los desarrolladores como de los usuarios. JTools adopta, por filosofía del desarrollador un diseño monolítico (Un único archivo de script que define toda la lógica de programación).
-- JTools ofrece diferentes funciones que son primordiales para el trabajo diarios de un desarrollador o estudiante como lo seria la creacion básica de maquinas virtuales, el manejo de contenedores mediante **Docker** o la gestión del firewall **UFW** (incorporado en muchas distribuciones de GNU/Linux y sus repositorios) entre muchas otras funciones que se implementaran.
+- JTools ofrece diferentes funciones que son primordiales para el trabajo diarios de un desarrollador o estudiante como lo seria la creación básica de maquinas virtuales, el manejo de contenedores mediante **Docker** o la gestión del firewall **UFW** (incorporado en muchas distribuciones de GNU/Linux y sus repositorios) entre muchas otras funciones que se implementaran.
 - JTools es un proyecto de carácter académico y no busca la creación de nuevas tecnologías, simplemente facilitar el manejo de las mismas que implementa.
 - Se recomienda su uso para sistemas operativos **Debian GNU/Linux** y derivados con arquitectura **x86_64** y **BASH** como shell del sistema (se puede saber cual es la que ofrece su sistema con el comando `echo $SHELL`. Esto no implica que sea estricto su uso para estos sistemas, puede ser utilizado para sistemas base **RHEL/Fedora** y **ArchLinux** pero se recomienda su uso en sistemas del ecosistema **Debian**.
 
@@ -32,6 +32,7 @@ El código de **JTools** se encuentra actualmente alojado dentro de un repositor
 ### v0.0.2:
 - Se habilita dentro del menú de JTools, la opción NECESARIA para el correcto funcionamiento de la herramienta que permite la instalación de los paquetes bases y la generación de la estructura de directorios para sistemas **Debian GNU/Linux**, **ArchLinux** y **Fedora** empleando los respectivos gestores de paquetes de los mismos (apt, pacman y dnf).
 - Se implementaron opciones para gestionar de forma básica el firewall UFW el cual ofrece simples operaciones que ofrece el programa. Se pueden presentar errores los cuales serán corregidos en futuras versiones.
+- También se ofrecieron opciones para gestionar el servicio SSH de forma simple. Se debe de iniciar el servicio previamente usando el init Systemd de forma manual, esto sera corregido en futuras versiones para ofrecer una opción para iniciar el servicio dependiendo del sistema. 
 - Aun no esta en desarrollo las funciones para gestionar contenedores de Docker, las mismas se implementaran en la siguiente versión.
 
 ### v0.0.1
